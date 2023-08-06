@@ -1,0 +1,21 @@
+.bookParentContainer {
+  padding-bottom: 20px;
+}
+
+.booksContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.booksOnShelf {
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.booksOnShelf img {
+  width: 160px;
+  height: 180px;
+  object-fit: cover;
+}
