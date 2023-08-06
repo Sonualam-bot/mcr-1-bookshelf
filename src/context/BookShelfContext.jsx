@@ -7,21 +7,35 @@ export const BookShelfContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(BookReducer, initialState)
 
 
-    const handleMoving = state.shelves === "" ? state.booksDb : state.booksDb.filter((book) => {
-        return (
-            book.category === state.shelves
+    const handleMoving = (bookshelf, bookId) => {
+        const moveBooks =
+            state.booksDb.map((book) => book.id === bookId ?
+                //here to send books in different shelves i am using map method to match the books with the id 
+                { ...book, category: bookshelf } : book)
+        // if it matches the id i am manipulating the category with the selected shelf category if not i am returning the book
+        dispatch({
+            type: "MOVE_BOOKS",
+            payload: {
+                move: moveBooks
+            }
+        })
+        //with dispatch i am setting the books new category in the reducer for the booksDb array
+    }
 
-        )
-    })
+    //getting the value of the dropdown
+    const handleDropDownValue = (e, bookId) => {
+        const bookShelfValue = e.target.value
+        handleMoving(bookShelfValue, bookId)
+    }
 
-    console.log(handleMoving)
 
+    //separate section for books
+    const userIsCurrentlyReading = state.booksDb.filter(({ category }) => category === "currentlyReading")
+    const userWantsToRead = state.booksDb.filter(({ category }) => category === "wantToRead")
+    const userHasRead = state.booksDb.filter(({ category }) => category === "read")
 
-    const userIsCurrentlyReading = handleMoving.filter(({ category }) => category === "currentlyReading")
-    const userWantsToRead = handleMoving.filter(({ category }) => category === "wantToRead")
-    const userHasRead = handleMoving.filter(({ category }) => category === "read")
-
-    const bookCategories = state.booksDb.reduce((acc, curr) => {
+    //separate categories for books
+    const bookCategories = state.booksSearch.reduce((acc, curr) => {
         if (acc.includes(curr.category)) {
             return acc
         } else {
@@ -30,24 +44,29 @@ export const BookShelfContextProvider = ({ children }) => {
     }, [])
 
 
-    const handleDropDownValue = (e) => {
+    const handleBookSearch = (e) => {
         dispatch({
-            type: "SHELF_VALUE",
+            type: 'SEARCH_BOOK',
             payload: {
-                shelf: e.target.value
+                search: e.target.value
             }
         })
     }
+
+    const searchBooksByTitle = state.booksDb.filter((book) => book.title.toLowerCase().includes(state.searchInput.toLowerCase()))
 
 
 
 
     const value = {
+        state,
         userIsCurrentlyReading,
         userWantsToRead,
         userHasRead,
         bookCategories,
-        handleDropDownValue
+        handleDropDownValue,
+        handleBookSearch,
+        searchBooksByTitle
     }
 
 

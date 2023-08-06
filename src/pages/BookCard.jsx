@@ -11,13 +11,13 @@ export const BookCard = ({ books }) => {
                 <p> {title} </p>
                 <p> {author} </p>
                 <select
-                    onChange={handleDropDownValue}
+                    onChange={(e) => handleDropDownValue(e, id)}
                 >
                     <option>Move To...</option>
 
                     {bookCategories.map((cat) => {
                         return (
-                            <option key={cat.id} value={cat.category} > {cat} </option>
+                            <option key={cat} value={cat} name="cat" > {cat} </option>
                         )
                     })}
                     <option value="none" >None</option>

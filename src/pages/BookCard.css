@@ -1,5 +1,9 @@
 .bookParentContainer {
-  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid black;
 }
 
 .booksContainer {
@@ -18,4 +22,42 @@
   width: 160px;
   height: 180px;
   object-fit: cover;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  border-bottom: 1px solid grey;
+}
+
+.navlink {
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+  font-weight: 500;
+}
+
+.navlink:hover {
+  color: brown;
+}
+
+.homelink {
+  color: black;
+}
+
+.searchContainer {
+  margin: 1.5rem;
+}
+
+.searchContainer input {
+  padding: 0.7rem;
+  width: 200px;
+  border-radius: 20px;
+}
+
+.bookIndiShelf {
+  border-right: 2px solid black;
+  padding: 0.7rem;
 }

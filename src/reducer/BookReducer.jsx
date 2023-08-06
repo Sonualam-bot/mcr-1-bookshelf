@@ -3,7 +3,9 @@ import { BookData } from "../data/BookData";
 export const initialState = {
     booksDb: BookData,
     booksSearch: BookData,
-    shelves: ""
+    shelves: "",
+    bookId: "",
+    searchInput: ""
 
 }
 
@@ -12,14 +14,10 @@ export const BookReducer = (state, action) => {
 
     switch (type) {
 
-        case "SHELF_VALUE":
-            console.log("SHELF_VALUE", payload)
-            return { ...state, shelves: payload.currentShelf }
-
-
-        // case "MOVE_BOOK":
-        //     console.log("MOVE_BOOK", payload);
-        //     return { ...state, booksDb: payload.move };
+        case "MOVE_BOOKS":
+            return { ...state, booksDb: payload.move };
+        case "SEARCH_BOOK":
+            return { ...state, searchInput: payload.search }
 
         default:
             throw new Error(`Unknown action type  ${action.type} `)

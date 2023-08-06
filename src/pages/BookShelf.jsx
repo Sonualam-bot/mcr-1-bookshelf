@@ -6,18 +6,19 @@ import "./BookCard.css"
 export const BookShelf = () => {
     return (
         <>
-            <u><h1>BookShelf</h1></u>
+
+
 
             <div className="bookParentContainer" >
-                <div>
+                <div className="bookIndiShelf" >
                     <h2>Currently Reading</h2>
                     <CurrentlyReading />
                 </div>
-                <div>
+                <div className="bookIndiShelf" >
                     <h2>Wants To Read</h2>
                     <WantToRead />
                 </div>
-                <div>
+                <div className="" >
                     <h2>Read</h2>
                     <Read />
                 </div>

@@ -7,7 +7,7 @@ export const Read = () => {
     const { userHasRead } = useContext(BookShelfContext)
     return (
         <div className="booksContainer" >
-            {userHasRead?.map((books) => {
+            {userHasRead.length === 0 ? <p>You haven't read books yet</p> : userHasRead?.map((books) => {
 
                 return (
                     <BookCard books={books} key={books.id} />
