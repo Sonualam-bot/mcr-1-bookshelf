@@ -2,7 +2,7 @@ import { useContext } from "react";
 import "./BookCard.css"
 import { BookShelfContext } from "../context/BookShelfContext";
 export const BookCard = ({ books }) => {
-    const { id, image, author, title } = books;
+    const { id, image, author, title, category } = books;
     const { bookCategories, handleDropDownValue } = useContext(BookShelfContext)
     return (
         <>
@@ -11,13 +11,15 @@ export const BookCard = ({ books }) => {
                 <p> {title} </p>
                 <p> {author} </p>
                 <select
+                    className="select-dropdown"
                     onChange={(e) => handleDropDownValue(e, id)}
+                    value={category}
                 >
                     <option>Move To...</option>
 
                     {bookCategories.map((cat) => {
                         return (
-                            <option key={cat} value={cat} name="cat" > {cat} </option>
+                            <option key={cat} value={cat} name={cat} > {cat} </option>
                         )
                     })}
                     <option value="none" >None</option>

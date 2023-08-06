@@ -61,3 +61,9 @@
   border-right: 2px solid black;
   padding: 0.7rem;
 }
+
+/* Styles for the selected option */
+.select-dropdown option:checked {
+  background-color: #10a9cf;
+  color: #ffffff;
+}
