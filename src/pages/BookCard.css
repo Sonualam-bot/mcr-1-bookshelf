@@ -5,6 +5,11 @@
   gap: 0.5rem;
   border-bottom: 2px solid black;
 }
+.bookParentContainer h2 {
+  text-transform: uppercase;
+  /* text-decoration: overline underline; */
+  box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
 
 .booksContainer {
   display: flex;
@@ -45,6 +50,7 @@
 
 .homelink {
   color: black;
+  text-transform: uppercase;
 }
 
 .searchContainer {
